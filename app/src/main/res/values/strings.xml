@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">GettingSafe</string>
+    <string name="tittle">Getting Safe my trip</string>
+    <string name="exit">Press again to exit</string>
+    <string name="welcome">"Welcome, "</string>
+    <string name="initTrip">Initiate new trip</string>
+    <string name="latsTrips">Use previous trip</string>
+    <string name="updateUserInfo">Update my data</string>
 </resources>

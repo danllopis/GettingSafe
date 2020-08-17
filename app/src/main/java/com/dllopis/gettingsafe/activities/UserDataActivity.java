@@ -1,14 +1,16 @@
-package com.dllopis.gettingsafe;
+package com.dllopis.gettingsafe.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import com.dllopis.gettingsafe.R;
+
+public class UserDataActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_user_data);
     }
 }
