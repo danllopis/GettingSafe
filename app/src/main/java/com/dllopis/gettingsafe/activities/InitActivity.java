@@ -1,5 +1,4 @@
 package com.dllopis.gettingsafe.activities;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -13,7 +12,7 @@ public class InitActivity extends AppCompatActivity {
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_init);
 
         // La aplicación muestra la ventana de inicio y espera dos segundos para enviarte a la siguiente ventana.
         new Handler().postDelayed(new Runnable() {
@@ -23,7 +22,7 @@ public class InitActivity extends AppCompatActivity {
                     Intent main = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(main);
                     finish();
-                //Al no haber datos de usuario y ser la primera vez que entra se dirige a la ventana de datos para poder usar la aplicación.
+                    //Al no haber datos de usuario y ser la primera vez que entra se dirige a la ventana de datos para poder usar la aplicación.
                 } else {
                     Intent userData = new Intent(getApplicationContext(), UserDataActivity.class);
                     startActivity(userData);
