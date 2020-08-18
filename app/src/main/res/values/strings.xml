@@ -6,4 +6,5 @@
     <string name="initTrip">Initiate new trip</string>
     <string name="latsTrips">Use previous trip</string>
     <string name="updateUserInfo">Update my data</string>
+    <string name="previousTrips">Previous Trips</string>
 </resources>

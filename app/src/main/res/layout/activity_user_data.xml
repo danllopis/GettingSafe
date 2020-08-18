@@ -1,9 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.UserDataActivity">
+    tools:context=".activities.UserDataActivity"
+    android:orientation="vertical"
+    android:background="@drawable/gradient_background">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Datos de usuario"
+        android:layout_marginTop="50dp"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:textSize="30dp"/>
+
+    <GridLayout
+        android:columnCount="2"
+        android:rowCount="2"
+        android:columnOrderPreserved="false"
+        android:layout_margin="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <!-- Row 1 -->
+
+        <!-- Column 1 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="50dp"
+            android:text="Nombre"
+            android:textColor="@android:color/white"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:layout_column="0"
+            android:layout_row="0"
+            android:layout_gravity="center"
+            android:textAlignment="center"/>
+
+        <!-- Column 2 -->
+        <EditText
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:textColor="@android:color/black"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:background="@drawable/input_border"
+            android:layout_column="1"
+            android:layout_row="0"
+            android:layout_gravity="center"/>
+        <!-- Row 2 -->
+
+        <!-- Column 1 -->
+        <TextView
+            android:layout_width="167dp"
+            android:layout_height="wrap_content"
+            android:text="Contacto de emergencia"
+            android:textColor="@android:color/white"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:layout_column="0"
+            android:layout_row="1"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"/>
+
+        <!-- Column 2 -->
+        <RelativeLayout
+            android:id="@+id/spinnerLayout"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/input_border"
+            android:orientation="horizontal"
+            android:layout_column="1"
+            android:layout_row="1"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp">
+
+            <Spinner
+                android:id="@+id/codeSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:layout_marginLeft="5dp"
+                android:spinnerMode="dropdown"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_arrow_drop_down" />
+
+        </RelativeLayout>
+
+    </GridLayout>
+
+</LinearLayout>
+
