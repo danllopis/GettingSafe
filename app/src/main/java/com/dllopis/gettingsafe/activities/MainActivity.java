@@ -22,11 +22,30 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         updateDataButton = findViewById(R.id.updateUserInfo);
+        initTripButton = findViewById(R.id.initTripButton);
+        lastsTripButtons = findViewById(R.id.lastTripsButton);
 
         updateDataButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), UserDataActivity.class));
+                finish();
+            }
+        });
+
+        initTripButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), MapsActivity.class));
+                finish();
+            }
+        });
+
+        lastsTripButtons.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), TripHistoryActivity.class));
+                finish();
             }
         });
     }
