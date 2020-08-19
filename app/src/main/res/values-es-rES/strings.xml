@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LlegandoASalvo</string>
+    <string name="tittle">Llegando a salvo a mi destino</string>
+    <string name="exit">Pulsa otra vez para salir</string>
+    <string name="welcome">Bienvenido, </string>
+    <string name="initTrip">Iniciar nuevo viaje</string>
+    <string name="latsTrips">Usar viaje anterior</string>
+    <string name="updateUserInfo">Actualizar mis datos</string>
+    <string name="previousTrips">Viajes anteriores</string>
+    <string name="time">Tiempo</string>
+    <string name="destiny">Destino:</string>
+    <string name="origin">Origen:</string>
+    <string name="back">Atrás</string>
+    <string name="user_data">Datos de Usuario</string>
+    <string name="name">Nombre</string>
+    <string name="emergency_contact">Contacto de emergencia</string>
+    <string name="save">Guardar datos</string>
+    <string name="title_activity_maps">Mapa</string>
+</resources>

@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">GettingSafe</string>
+    <string name="tittle">Getting Safe my trip</string>
+    <string name="exit">Press again to exit</string>
+    <string name="welcome">Welcome, </string>
+    <string name="initTrip">Initiate new trip</string>
+    <string name="latsTrips">Use previous trip</string>
+    <string name="updateUserInfo">Update my data</string>
+    <string name="previousTrips">Previous Trips</string>
+    <string name="time">Time</string>
+    <string name="destiny">Destiny:</string>
+    <string name="origin">Origin:</string>
+    <string name="back">Back</string>
+    <string name="user_data">User Data</string>
+    <string name="name">Name</string>
+    <string name="emergency_contact">Emergency contact</string>
+    <string name="save">Save data</string>
+    <string name="title_activity_maps">Map</string>
 </resources>
