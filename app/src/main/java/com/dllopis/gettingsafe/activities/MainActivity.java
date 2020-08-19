@@ -7,23 +7,42 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dllopis.gettingsafe.R;
+import com.dllopis.gettingsafe.model.Preferencias;
+
+import java.util.ArrayList;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
     private boolean doubleBackToExitPressedOnce = false;
-    private CardView initTripButton, lastsTripButtons, updateDataButton;
+    @BindView(R.id.initTripButton)
+    CardView initTripButton;
+
+    @BindView(R.id.lastTripsButton)
+    CardView lastsTripButtons;
+
+    @BindView(R.id.updateUserInfo)
+    CardView updateDataButton;
+
+    @BindView(R.id.welcome)
+    TextView welcomeText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 
-        updateDataButton = findViewById(R.id.updateUserInfo);
-        initTripButton = findViewById(R.id.initTripButton);
-        lastsTripButtons = findViewById(R.id.lastTripsButton);
+        final Preferencias preferencias = Preferencias.init(getApplicationContext());
+
+        ArrayList<String> userData = preferencias.getUserData();
+        welcomeText.append(" "+userData.get(0));
 
         updateDataButton.setOnClickListener(new View.OnClickListener() {
             @Override

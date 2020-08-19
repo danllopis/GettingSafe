@@ -10,6 +10,9 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.dllopis.gettingsafe.R;
+import com.dllopis.gettingsafe.model.Preferencias;
+
+import java.util.ArrayList;
 
 public class UserDataActivity extends AppCompatActivity {
 
@@ -20,12 +23,18 @@ public class UserDataActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_data);
+        final Preferencias preferencias = Preferencias.init(getApplicationContext());
 
         saveDataButton = findViewById(R.id.saveButton);
 
         saveDataButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ArrayList<String> UserData = new ArrayList<>();
+                UserData.add("Daniel");
+                UserData.add("Llopis Laguna");
+
+                preferencias.setUserData(UserData);
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 finish();
             }
