@@ -16,4 +16,11 @@
     <string name="emergency_contact">Emergency contact</string>
     <string name="save">Save data</string>
     <string name="title_activity_maps">Map</string>
+
+    <string-array name="array_name">
+        <item>Call</item>
+        <item>SMS</item>
+        <item>WhatsApp</item>
+        <item>Telegram</item>
+    </string-array>
 </resources>

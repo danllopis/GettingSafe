@@ -11,17 +11,21 @@ import android.widget.Toast;
 
 import com.dllopis.gettingsafe.R;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class TripHistoryActivity extends AppCompatActivity {
 
     private boolean doubleBackToExitPressedOnce = false;
-    private CardView backButton;
+
+    @BindView(R.id.backButton)
+    CardView backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trip_history);
-
-        backButton = findViewById(R.id.backButton);
+        ButterKnife.bind(this);
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
