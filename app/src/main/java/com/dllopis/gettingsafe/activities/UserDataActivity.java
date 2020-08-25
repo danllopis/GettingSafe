@@ -26,6 +26,7 @@ import butterknife.ButterKnife;
 public class UserDataActivity extends AppCompatActivity {
 
     private boolean doubleBackToExitPressedOnce = false;
+    private String emergencyContactNumber;
     @BindView(R.id.saveButton)
     CardView saveDataButton;
 
@@ -60,6 +61,7 @@ public class UserDataActivity extends AppCompatActivity {
             UserDataUpdate.add(userNameEdit.getText().toString());
             UserDataUpdate.add(emergencyContactText.getText().toString());
             UserDataUpdate.add(contactMethodSpinner.getSelectedItem().toString());
+            UserDataUpdate.add(emergencyContactNumber);
 
             preferencias.setUserData(UserDataUpdate);
             startActivity(new Intent(getApplicationContext(), MainActivity.class));
@@ -77,19 +79,28 @@ public class UserDataActivity extends AppCompatActivity {
         // TODO Auto-generated method stub
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode == 1){
-            if(resultCode == RESULT_OK){
+        if(requestCode == 1) {
+            if (resultCode == RESULT_OK) {
                 Uri contactData = data.getData();
-                Cursor cursor =  managedQuery(contactData, null, null, null, null);
-                cursor.moveToFirst();
+                Cursor c = getContentResolver().query(contactData, null, null, null, null);
+                if (c.moveToFirst()) {
+                    String contactId = c.getString(c.getColumnIndex(ContactsContract.Contacts._ID));
+                    String hasNumber = c.getString(c.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER));
+                    String num = "";
+                    if (Integer.valueOf(hasNumber) == 1) {
+                        Cursor numbers = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = " + contactId, null, null);
+                        while (numbers.moveToNext()) {
+                            emergencyContactNumber = numbers.getString(numbers.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
 
-                String name = cursor.getString(cursor.getColumnIndexOrThrow(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
+                        }
 
-                emergencyContactText.setText(name);
+                        String name = c.getString(c.getColumnIndexOrThrow(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
+                        emergencyContactText.setText(name);
+                    }
+                }
             }
         }
     }
-
     @Override
     public void onBackPressed() {
         if (doubleBackToExitPressedOnce) {
