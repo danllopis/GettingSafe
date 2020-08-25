@@ -148,7 +148,7 @@
                 android:gravity="center"
                 android:layout_marginLeft="5dp"
                 android:spinnerMode="dropdown"
-                android:entries="@array/array_name"
+                android:entries="@array/contact_method"
                 android:padding="10dp"/>
 
             <ImageView

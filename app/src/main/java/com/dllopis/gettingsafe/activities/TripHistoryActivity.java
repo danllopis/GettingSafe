@@ -7,9 +7,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.dllopis.gettingsafe.R;
+import com.dllopis.gettingsafe.model.DBHelper;
+import com.dllopis.gettingsafe.model.TripAdapter;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -21,11 +26,20 @@ public class TripHistoryActivity extends AppCompatActivity {
     @BindView(R.id.backButton)
     CardView backButton;
 
+    @BindView(R.id.lastsTripsList)
+    ListView lastsTripsList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trip_history);
         ButterKnife.bind(this);
+
+        DBHelper dbHelper = new DBHelper(this);
+        ArrayList trips = (ArrayList) dbHelper.getLastsTrips();
+        TripAdapter adapter = new TripAdapter(this ,trips);
+
+        lastsTripsList.setAdapter(adapter);
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
