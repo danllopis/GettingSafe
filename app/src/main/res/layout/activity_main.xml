@@ -8,6 +8,7 @@
     android:background="@drawable/gradient_background">
 
     <TextView
+        android:id="@+id/welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/welcome"
@@ -15,7 +16,8 @@
         android:layout_marginTop="100dp"
         android:textStyle="bold"
         android:textColor="@android:color/white"
-        android:textSize="40dp"/>
+        android:textSize="40dp"
+        android:textAlignment="center"/>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/initTripButton"
