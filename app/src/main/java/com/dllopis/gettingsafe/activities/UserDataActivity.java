@@ -56,20 +56,32 @@ public class UserDataActivity extends AppCompatActivity {
             contactMethodSpinner.setSelection(((ArrayAdapter) contactMethodSpinner.getAdapter()).getPosition(userData.get(2)));
         }
 
-        saveDataButton.setOnClickListener(v -> {
-            ArrayList<String> UserDataUpdate = new ArrayList<>();
-            UserDataUpdate.add(userNameEdit.getText().toString());
-            UserDataUpdate.add(emergencyContactText.getText().toString());
-            UserDataUpdate.add(contactMethodSpinner.getSelectedItem().toString());
-            UserDataUpdate.add(emergencyContactNumber);
+        setOnClickListeners(preferencias);
+    }
 
-            preferencias.setUserData(UserDataUpdate);
-            startActivity(new Intent(getApplicationContext(), MainActivity.class));
-            finish();
+    private void setOnClickListeners(Preferencias preferencias) {
+        saveDataButton.setOnClickListener(v -> {
+            if(!userNameEdit.getText().toString().isEmpty()) {
+                ArrayList<String> UserDataUpdate = new ArrayList<>();
+                UserDataUpdate.add(userNameEdit.getText().toString());
+                UserDataUpdate.add(emergencyContactText.getText().toString());
+                UserDataUpdate.add(contactMethodSpinner.getSelectedItem().toString());
+                if (emergencyContactNumber == null)
+                    emergencyContactNumber = "112";
+                UserDataUpdate.add(emergencyContactNumber);
+
+                System.out.println("Numero: " + emergencyContactNumber);
+
+                preferencias.setUserData(UserDataUpdate);
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                finish();
+            } else {
+                Toast.makeText(this, "Inserte el nombre.", Toast.LENGTH_SHORT).show();
+            }
         });
 
         emergencyContactButton.setOnClickListener(view -> {
-            Intent intent = new Intent(Intent.ACTION_PICK,ContactsContract.Contacts.CONTENT_URI);
+            Intent intent = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
             startActivityForResult(intent, 1);
         });
     }
@@ -86,12 +98,10 @@ public class UserDataActivity extends AppCompatActivity {
                 if (c.moveToFirst()) {
                     String contactId = c.getString(c.getColumnIndex(ContactsContract.Contacts._ID));
                     String hasNumber = c.getString(c.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER));
-                    String num = "";
                     if (Integer.valueOf(hasNumber) == 1) {
                         Cursor numbers = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = " + contactId, null, null);
                         while (numbers.moveToNext()) {
                             emergencyContactNumber = numbers.getString(numbers.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
-
                         }
 
                         String name = c.getString(c.getColumnIndexOrThrow(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));

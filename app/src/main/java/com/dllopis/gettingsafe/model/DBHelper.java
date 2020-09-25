@@ -17,6 +17,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String COLUMN_ORIGEN = "ORIGEN";
     public static final String COLUMN_DESTINO = "DESTINO";
     public static final String COLUMN_TIEMPO = "TIEMPO";
+    public static final String COLUMN_METODO = "METODO";
     public static final String COLUMN_ID = "ID";
 
     private static final String SQL_DELETE_ENTRIES =
@@ -31,6 +32,7 @@ public class DBHelper extends SQLiteOpenHelper {
         String createTableStatement = "CREATE TABLE " + TRAYECTOS_TABLE + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUMN_ORIGEN + " TEXT," +
                 COLUMN_DESTINO + " TEXT," +
+                COLUMN_METODO + " TEXT," +
                 COLUMN_TIEMPO + " INT)";
 
         db.execSQL(createTableStatement);
@@ -48,6 +50,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         cv.put(COLUMN_ORIGEN, trayecto.getOrigen());
         cv.put(COLUMN_DESTINO, trayecto.getDestino());
+        cv.put(COLUMN_METODO, trayecto.getMetodo());
         cv.put(COLUMN_TIEMPO, trayecto.getTiempo());
 
         long insert = db.insert(TRAYECTOS_TABLE, null, cv);
@@ -75,9 +78,10 @@ public class DBHelper extends SQLiteOpenHelper {
             int id = c.getInt(c.getColumnIndexOrThrow(COLUMN_ID));
             String origen = c.getString(c.getColumnIndexOrThrow(COLUMN_ORIGEN));
             String destino = c.getString(c.getColumnIndexOrThrow(COLUMN_DESTINO));
+            String metodo = c.getString(c.getColumnIndexOrThrow(COLUMN_METODO));
             int tiempo = c.getInt(c.getColumnIndexOrThrow(COLUMN_TIEMPO));
 
-            Trayecto t = new Trayecto(id,origen,destino,tiempo);
+            Trayecto t = new Trayecto(id,origen,destino, metodo,tiempo);
 
             lastsTrips.add(t);
         }

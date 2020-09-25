@@ -3,13 +3,14 @@ package com.dllopis.gettingsafe.model;
 public class Trayecto {
 
     private int id;
-    private String origen, destino;
+    private String origen, destino, metodo;
     private int tiempo;
 
-    public Trayecto(int id, String origen, String destino, int tiempo) {
+    public Trayecto(int id, String origen, String destino, String metodo, int tiempo) {
         this.id = id;
         this.origen = origen;
         this.destino = destino;
+        this.metodo = metodo;
         this.tiempo = tiempo;
     }
 
@@ -45,12 +46,21 @@ public class Trayecto {
         this.tiempo = tiempo;
     }
 
+    public String getMetodo() {
+        return metodo;
+    }
+
+    public void setMetodo(String metodo) {
+        this.metodo = metodo;
+    }
+
     @Override
     public String toString() {
         return "Viaje{" +
                 "id=" + id +
                 ", origen='" + origen + '\'' +
                 ", destino='" + destino + '\'' +
+                ", modo='" + metodo + '\'' +
                 ", tiempo=" + tiempo +
                 '}';
     }

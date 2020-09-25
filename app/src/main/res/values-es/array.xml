@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="contact_method">
+        <item>Llamada</item>
+        <item>SMS</item>
+        <item>WhatsApp</item>
+    </string-array>
+
+    <string-array name="trip_method">
+        <item>Andando</item>
+        <item>Coche</item>
+        <item>Transporte Público</item>
+    </string-array>
+</resources>

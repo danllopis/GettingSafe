@@ -6,7 +6,6 @@ import androidx.cardview.widget.CardView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,28 +43,23 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<String> userData = preferencias.getUserData();
         welcomeText.append(" "+userData.get(0));
 
-        updateDataButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), UserDataActivity.class));
-                finish();
-            }
+        setClickListeners();
+    }
+
+    private void setClickListeners() {
+        updateDataButton.setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(), UserDataActivity.class));
+            finish();
         });
 
-        initTripButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), MapsActivity.class));
-                finish();
-            }
+        initTripButton.setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(), InitTripActivity.class));
+            finish();
         });
 
-        lastsTripButtons.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), TripHistoryActivity.class));
-                finish();
-            }
+        lastsTripButtons.setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(), TripHistoryActivity.class));
+            finish();
         });
     }
 

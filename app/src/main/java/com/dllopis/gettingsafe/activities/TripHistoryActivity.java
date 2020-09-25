@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.dllopis.gettingsafe.R;
 import com.dllopis.gettingsafe.model.DBHelper;
+import com.dllopis.gettingsafe.model.Trayecto;
 import com.dllopis.gettingsafe.model.TripAdapter;
 
 import java.util.ArrayList;
@@ -48,6 +49,17 @@ public class TripHistoryActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        lastsTripsList.setOnItemClickListener((adapterView, view, i, l) -> {
+            Trayecto item = (Trayecto)adapter.getItem(i);
+            Intent trip = new Intent(getApplicationContext(), TripActivity.class);
+            trip.putExtra("time", item.getTiempo());
+            trip.putExtra("destiny", item.getDestino());
+            trip.putExtra("method", getMethod(item.getMetodo()));
+            trip.putExtra("origin", item.getOrigen());
+            startActivity(trip);
+            finish();
+        });
     }
 
     @Override
@@ -67,5 +79,17 @@ public class TripHistoryActivity extends AppCompatActivity {
                 doubleBackToExitPressedOnce = false;
             }
         }, 2000);
+    }
+
+    private String getMethod(String method){
+        String[] tripMethods = getResources().getStringArray(R.array.trip_method);
+
+        if(method.equals(tripMethods[0])){
+            return "walking";
+        } else if(method.equals(tripMethods[1])){
+            return "driving";
+        } else {
+            return "transit";
+        }
     }
 }
