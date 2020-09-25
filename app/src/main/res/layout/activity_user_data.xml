@@ -20,11 +20,12 @@
 
     <GridLayout
         android:columnCount="2"
-        android:rowCount="2"
+        android:rowCount="3"
         android:columnOrderPreserved="false"
-        android:layout_margin="24dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_margin="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
         <!-- Row 1 -->
 
         <!-- Column 1 -->
@@ -44,6 +45,7 @@
 
         <!-- Column 2 -->
         <EditText
+            android:id="@+id/userName"
             android:layout_width="175dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
@@ -65,7 +67,7 @@
             android:text="@string/emergency_contact"
             android:textColor="@android:color/white"
             android:textAlignment="center"
-            android:textSize="30dp"
+            android:textSize="27dp"
             android:textStyle="bold"
             android:layout_column="0"
             android:layout_row="1"
@@ -73,14 +75,66 @@
             android:layout_marginTop="40dp"/>
 
         <!-- Column 2 -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/emergencyContactButton"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:textColor="@android:color/black"
+            android:textSize="27dp"
+            android:textStyle="bold"
+            android:foreground="?attr/selectableItemBackground"
+            android:background="@drawable/input_border"
+            android:layout_column="1"
+            android:layout_row="1"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:padding="1dp"
+            app:cardCornerRadius="20dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/input_border"/>
+
+            <TextView
+                android:id="@+id/emergencyContactText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/defaultContact"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:padding="8dp"
+                android:textSize="20dp"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Row 3 -->
+
+        <!-- Column 1 -->
+        <TextView
+        android:layout_width="167dp"
+        android:layout_height="wrap_content"
+        android:text="@string/contactMethod"
+        android:textColor="@android:color/white"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:layout_column="0"
+        android:layout_row="2"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"/>
+
+        <!-- Column 2 -->
         <RelativeLayout
             android:id="@+id/spinnerLayout"
-            android:layout_width="80dp"
+            android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:background="@drawable/input_border"
             android:orientation="horizontal"
             android:layout_column="1"
-            android:layout_row="1"
+            android:layout_row="2"
             android:layout_gravity="center"
             android:layout_marginTop="40dp">
 
@@ -93,7 +147,9 @@
                 android:background="@android:color/transparent"
                 android:gravity="center"
                 android:layout_marginLeft="5dp"
-                android:spinnerMode="dropdown"/>
+                android:spinnerMode="dropdown"
+                android:entries="@array/contact_method"
+                android:padding="10dp"/>
 
             <ImageView
                 android:layout_width="wrap_content"

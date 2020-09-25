@@ -7,13 +7,22 @@
     <string name="latsTrips">Use previous trip</string>
     <string name="updateUserInfo">Update my data</string>
     <string name="previousTrips">Previous Trips</string>
-    <string name="time">Time</string>
-    <string name="destiny">Destiny:</string>
-    <string name="origin">Origin:</string>
+    <string name="time">Time </string>
+    <string name="destiny">Destiny </string>
+    <string name="origin">Origin </string>
+    <string name="method">Metodo </string>
     <string name="back">Back</string>
     <string name="user_data">User Data</string>
     <string name="name">Name</string>
     <string name="emergency_contact">Emergency contact</string>
     <string name="save">Save data</string>
     <string name="title_activity_maps">Map</string>
+    <string name="defaultContact">112 (Default)</string>
+    <string name="tripStart">Start trip</string>
+    <string name="contactMethod">Contact Method</string>
+    <string name="tripMethod">Trip Method</string>
+    <string name="remaining">Remaining time</string>
+    <string name="cancel">Cancel</string>
+    <string name="arrived">I arrived</string>
+    <string name="add_time">Add minutes</string>
 </resources>

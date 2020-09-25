@@ -6,47 +6,60 @@ import androidx.cardview.widget.CardView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dllopis.gettingsafe.R;
+import com.dllopis.gettingsafe.model.Preferencias;
+
+import java.util.ArrayList;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
     private boolean doubleBackToExitPressedOnce = false;
-    private CardView initTripButton, lastsTripButtons, updateDataButton;
+    @BindView(R.id.initTripButton)
+    CardView initTripButton;
+
+    @BindView(R.id.lastTripsButton)
+    CardView lastsTripButtons;
+
+    @BindView(R.id.updateUserInfo)
+    CardView updateDataButton;
+
+    @BindView(R.id.welcome)
+    TextView welcomeText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 
-        updateDataButton = findViewById(R.id.updateUserInfo);
-        initTripButton = findViewById(R.id.initTripButton);
-        lastsTripButtons = findViewById(R.id.lastTripsButton);
+        final Preferencias preferencias = Preferencias.init(getApplicationContext());
 
-        updateDataButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), UserDataActivity.class));
-                finish();
-            }
+        ArrayList<String> userData = preferencias.getUserData();
+        welcomeText.append(" "+userData.get(0));
+
+        setClickListeners();
+    }
+
+    private void setClickListeners() {
+        updateDataButton.setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(), UserDataActivity.class));
+            finish();
         });
 
-        initTripButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), MapsActivity.class));
-                finish();
-            }
+        initTripButton.setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(), InitTripActivity.class));
+            finish();
         });
 
-        lastsTripButtons.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), TripHistoryActivity.class));
-                finish();
-            }
+        lastsTripButtons.setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(), TripHistoryActivity.class));
+            finish();
         });
     }
 
